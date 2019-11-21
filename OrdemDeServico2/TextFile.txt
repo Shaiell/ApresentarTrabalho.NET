@@ -1,0 +1,23 @@
+﻿instalar o entity framework
+1- instalar o entity.
+Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version:2.1.11
+
+2 - criar as classes modelo
+
+3 - Criar classe Context
+herdar do DbContext
+criar o contrutor
+criar o Dbset de cada classe de modelo
+
+4 - incluir configuração na classe Startup
+services.AddDbContext<Context>(options => options.UseSqlServer(Configuration.GetConnectionString("EcommerceConnection")));
+
+5 - criar string string de coneção no arquivo appsettings.json
+"ConnectionStrings": {
+    "EcommerceConnection": "Server=(localdb)\\mssqllocaldb;Database=DbEcommerce;Trusted_Connection=True"
+
+8 - Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version:2.1.11 -Project: Repository
+
+6 - Adicionar uma migração = Add-Migration NomeMigracao -Project: Repository
+
+7 - Atualizar o banco de dados = Update-Database -verbose -Project: Repository

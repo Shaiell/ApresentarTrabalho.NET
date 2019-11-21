@@ -1,0 +1,48 @@
+﻿@model Domain.Estoque
+
+
+
+<h2>Cadastro de estoque</h2>
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div id="Categoria" class="form-group">
+                    <label>Categoria:</label>
+                    <select asp-items="@ViewBag.Categorias" class="form-control" name="drpCategorias">
+                        <option> --Selecione--</option>
+                    </select>
+                    <span asp-validation-for="Produto.Categoria" class="text-danger"></span>
+                    <input type="submit" asp-action="BuscarCategoria" asp-controller="Estoque" value="Pesquisar" class="btn btn-warning" />
+                </div>
+                <div id="Produtos" class="form-group">
+                    <label>Produto:</label>
+                    <select asp-items="@ViewBag.Produtos" class="form-control" name="drpProduto">
+                        <option> --Selecione--</option>
+                    </select>
+                    <span asp-validation-for="Produto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Quantidade" class="control-label"></label>
+                    <input asp-for="Quantidade" class="form-control" />
+                    <span asp-validation-for="Quantidade" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Lote" class="control-label"></label>
+                    <input asp-for="Lote" class="form-control" />
+                    <span asp-validation-for="Lote" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+

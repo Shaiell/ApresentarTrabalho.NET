@@ -1,0 +1,75 @@
+﻿@model List<EstoqueEntrada>
+
+@{
+    
+    DateTime dataHora = ViewBag.DataHora;
+}
+
+<h2>Estoque</h2>
+
+<form class="form-inline mb-5 mx-sm-3">
+    <div class="mx-sm-3">
+        <a asp-action="Create" class="btn btn-success">Cadastrar</a>
+    </div>
+    <div class="mx-sm-3">
+        <select asp-items="@ViewBag.Categorias" class="form-control" name="drpCategorias">
+            <option> --Selecione--</option>
+        </select>
+
+        <input type="submit" value="Pesquisar" class="btn btn-success"</input>
+    </div>
+    <div class="mx-sm-3">
+        <a asp-action="Index" class="btn btn-success">Buscar Todos</a>
+    </div>
+</form>
+
+<table style="margin-top:10px;margin-bottom:10px" class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th>
+                Categoria
+            </th>
+            <th>
+                Nome
+            </th>
+            <th>
+                Quantidade
+            </th>
+            <th>
+                Lote
+            </th>
+            <th>
+                Data de Entrada
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Produto.Categoria.Nome
+                </td>
+                <td>
+                    @item.Produto.Nome
+                </td>
+                <td>
+                    @item.Quantidade
+                </td>
+                <td>
+                    @item.Lote
+                </td>
+                <td>
+                    @item.DataEntrada
+                </td>
+                <td>
+                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.EstoqueId">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p>
+    <b> Dados atualizados em: </b> @dataHora
+</p>

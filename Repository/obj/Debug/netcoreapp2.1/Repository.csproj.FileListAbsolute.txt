@@ -1,0 +1,16 @@
+C:\Users\jclri\Desktop\C#\OrdemDeServico2\Repository\bin\Debug\netcoreapp2.1\Repository.deps.json
+C:\Users\jclri\Desktop\C#\OrdemDeServico2\Repository\bin\Debug\netcoreapp2.1\Repository.dll
+C:\Users\jclri\Desktop\C#\OrdemDeServico2\Repository\obj\Debug\netcoreapp2.1\Repository.csprojAssemblyReference.cache
+C:\Users\jclri\Desktop\C#\OrdemDeServico2\Repository\obj\Debug\netcoreapp2.1\Repository.csproj.CoreCompileInputs.cache
+C:\Users\jclri\Desktop\C#\OrdemDeServico2\Repository\obj\Debug\netcoreapp2.1\Repository.AssemblyInfoInputs.cache
+C:\Users\jclri\Desktop\C#\OrdemDeServico2\Repository\obj\Debug\netcoreapp2.1\Repository.AssemblyInfo.cs
+C:\Users\jclri\Desktop\C#\OrdemDeServico2\Repository\bin\Debug\netcoreapp2.1\Repository.pdb
+C:\Users\jclri\Desktop\C#\OrdemDeServico2\Repository\bin\Debug\netcoreapp2.1\Domain.dll
+C:\Users\jclri\Desktop\C#\OrdemDeServico2\Repository\bin\Debug\netcoreapp2.1\Domain.pdb
+C:\Users\jclri\Desktop\C#\OrdemDeServico2\Repository\obj\Debug\netcoreapp2.1\Repository.csproj.CopyComplete
+C:\Users\jclri\Desktop\C#\OrdemDeServico2\Repository\obj\Debug\netcoreapp2.1\Repository.dll
+C:\Users\jclri\Desktop\C#\OrdemDeServico2\Repository\obj\Debug\netcoreapp2.1\Repository.pdb
+C:\Users\jclri\Desktop\C#\OrdemDeServico2\Repository\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Mvc.ViewFeatures.dll
+C:\Users\jclri\Desktop\C#\OrdemDeServico2\Repository\bin\Debug\netcoreapp2.1\Newtonsoft.Json.dll
+C:\Users\jclri\Desktop\C#\OrdemDeServico2\Repository\bin\Debug\netcoreapp2.1\Microsoft.AspNetCore.Mvc.ViewFeatures.xml
+C:\Users\jclri\Desktop\C#\OrdemDeServico2\Repository\bin\Debug\netcoreapp2.1\Newtonsoft.Json.xml
