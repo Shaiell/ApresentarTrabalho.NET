@@ -17,7 +17,7 @@ namespace Repository
 
         public Estoque BuscarPorId(int? id)
         {
-            return ctx.Estoques.Find(id);
+            return ctx.Estoques.Include("Produto").FirstOrDefault(x=> x.EstoqueId.Equals(id));
         }
 
         public bool Cadastrar(Estoque objeto)

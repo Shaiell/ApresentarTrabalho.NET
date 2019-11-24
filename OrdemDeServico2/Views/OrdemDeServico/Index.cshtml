@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Domain.OrdemDeServico>
+
+@{
+    Layout = "~/Views/Shared/Layout1.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Cadastrar Ordem de serviço</title>
+</head>
+<body>
+<p>
+    <a asp-action="Cadastrar" class="btn btn-success">Cadastrar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Solicitante
+            </th>
+            <th>
+                Processador
+            </th>
+            <th>
+                Memoria
+            </th>
+            <th>
+                Placa mãe
+            </th>
+            <th>
+                Placa de video
+            </th>
+            <th>
+                HD
+            </th>
+            <th>
+                SSD
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Processador.Produto.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Memoria.Produto.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlacaMae.Produto.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlacaVideo.Produto.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hd.Produto.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ssd.Produto.Nome)
+            </td>
+
+        </tr>
+}
+    </tbody>
+</table>
+</body>
+</html>

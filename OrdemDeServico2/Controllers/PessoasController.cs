@@ -9,21 +9,27 @@ using Domain;
 using Repository;
 using System.Net;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Identity;
 
 namespace OrdemDeServico2.Controllers
 {
     public class PessoasController : Controller
     {
         private readonly PessoaDAO pDAO;
+        private readonly UserManager<UsuarioLogado> userManager;
+        private readonly SignInManager<UsuarioLogado> signInManager;
 
-        public PessoasController(PessoaDAO pessoaDAO)
+        public PessoasController(PessoaDAO pessoaDAO, UserManager<UsuarioLogado> u, SignInManager<UsuarioLogado> s)
         {
             pDAO = pessoaDAO;
+            userManager = u;
+            signInManager = s;
         }
 
         // GET: Pessoas
         public IActionResult Index()
         {
+            ViewBag.Pessoa = pDAO.BuscarPessoaPorCpf(userManager.GetUserName(User));
             return View(pDAO.ListarTodos());
         }
 
@@ -47,72 +53,91 @@ namespace OrdemDeServico2.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create( Pessoa pessoa, string nivel)
+        public async Task< IActionResult> Create( Pessoa pessoa, string nivel)
         {
+            if(nivel == null)
+            {
+                nivel = "Funcionario";
+            }
+
             if (ModelState.IsValid)
             {
-                if (nivel.Equals("n1")) {
-                    Pessoa p1 = new Cliente();
-                    p1 = pessoa;
-                    pDAO.Cadastrar(p1);
-                    return RedirectToAction("Index");
-                    
-                }else if (nivel.Equals("n2"))
+                //Criar um objeto do usuario logado e passar obrigatoriamente email e username
+                UsuarioLogado userLogado = new UsuarioLogado
                 {
-                    Pessoa p1 = new Funcionario();
-                    p1 = pessoa;
-                    pDAO.Cadastrar(p1);
-                    return RedirectToAction("Index");
+                    Email = pessoa.Email,
+                    UserName = pessoa.Cpf
+                };
+                //Cadastra o usuario na tabela do Identity
+                IdentityResult result = await userManager.CreateAsync(userLogado, pessoa.Senha);
+                //Testa o resultado do cadastro
+                if (result.Succeeded)
+                {
+                   
+
+                    if (nivel.Equals("Administrador"))
+                    {
+                        Funcionario p1 = new Funcionario();
+                        p1.Nome = pessoa.Nome;
+                        p1.Endereco = pessoa.Endereco;
+                        p1.Email = pessoa.Email;
+                        p1.Cpf = pessoa.Cpf;
+                        p1.Senha = pessoa.Senha;
+                        p1.ConfirmacaoSenha = pessoa.ConfirmacaoSenha;
+                        p1.Sexo = pessoa.Sexo;
+                        p1.Telefone = pessoa.Telefone;
+                        p1.Acesso = "Administrador";
+                        if (pDAO.CadastrarAdministrador(p1)) {
+
+                            //Logar usuario no sistema
+                            await signInManager.SignInAsync(userLogado, isPersistent: false);
+                            return RedirectToAction("Index", "Estoque");
+                        }
+                        else {
+                            ModelState.AddModelError("", "Cpf já Cadastrado");
+                        }
+
+                    }
+                    else
+                    {
+                        Cliente p1 = new Cliente();
+                        p1.Nome = pessoa.Nome;
+                        p1.Endereco = pessoa.Endereco;
+                        p1.Email = pessoa.Email;
+                        p1.Cpf = pessoa.Cpf;
+                        p1.Senha = pessoa.Senha;
+                        p1.ConfirmacaoSenha = pessoa.ConfirmacaoSenha;
+                        p1.Sexo = pessoa.Sexo;
+                        p1.Telefone = pessoa.Telefone;
+                        p1.Acesso = "Funcionario";
+                        if (pDAO.CadastrarFuncionario(p1))
+                        {
+                            //Logar usuario no sistema
+                            await signInManager.SignInAsync(userLogado, isPersistent: false);
+                            return RedirectToAction("Index");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "Cpf já Cadastrado");
+                        }
+                    }
                 }
-            }
-            return View(pessoa);
-        }
+                AdicionarErros(result);
 
-        // GET: Pessoas/Edit/5
-        public IActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var pessoa = pDAO.BuscarPorId(id);
-            if (pessoa == null)
-            {
-                return NotFound();
-            }
-            return View(pessoa);
-        }
-
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, Pessoa pessoa)
-        {
-            if (id != pessoa.PessoaId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
                
-                pDAO.AlterarPessoa(pessoa);
-                return RedirectToAction(nameof(Index));
-            }          
-                           
+            }
             return View(pessoa);
         }
 
-        // POST: Pessoas/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
+        private void AdicionarErros(IdentityResult result)
         {
-            pDAO.ExcluirPessoa(id);
-            return RedirectToAction(nameof(Index));
+            foreach (var erro in result.Errors)
+            {
+                ModelState.AddModelError("", erro.Description);
+            }
         }
 
+       
 
         [HttpPost]
         public IActionResult BuscarCep(Pessoa p)
@@ -123,6 +148,40 @@ namespace OrdemDeServico2.Controllers
             TempData["Endereco"] = client.DownloadString(url);
 
             return RedirectToAction(nameof(Create));
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            signInManager.SignOutAsync();
+            return RedirectToAction("Login");
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(Pessoa p)
+        {
+            var result = await signInManager.PasswordSignInAsync(p.Cpf, p.Senha, true, lockoutOnFailure: false);
+            if (result.Succeeded)
+            {
+
+                Pessoa usuario = pDAO.BuscarPessoaPorCpf(p.Cpf);
+
+                if(usuario.Acesso.Equals("Administrador")) { 
+                    return RedirectToAction("Index", "Produto");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "OrdemDeServico");
+                }
+            }
+
+            ModelState.AddModelError("", "Falha no login");
+            return View();
+            
         }
     }
 }

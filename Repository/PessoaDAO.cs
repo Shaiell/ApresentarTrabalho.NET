@@ -1,4 +1,5 @@
 ﻿using Domain;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace Repository
 
         public bool Cadastrar(Pessoa objeto)
         {
-            if (BuscarPessoaPorNome(objeto) == null)
+            if (BuscarPessoaPorCpf(objeto) == null)
             {
                 ctx.Pessoas.Add(objeto);
                 ctx.SaveChanges();
@@ -32,14 +33,41 @@ namespace Repository
             return false;
         }
 
-        public Pessoa BuscarPessoaPorNome(Pessoa p)
+        public bool CadastrarAdministrador(Funcionario objeto)
+        {
+            if (BuscarPessoaPorCpf(objeto) == null)
+            {
+                ctx.Pessoas.Add(objeto);
+                ctx.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
+        public bool CadastrarFuncionario(Cliente objeto)
+        {
+            if (BuscarPessoaPorCpf(objeto) == null)
+            {
+                ctx.Pessoas.Add(objeto);
+                ctx.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+
+        public Pessoa BuscarPessoaPorCpf(Pessoa p)
         {
             return ctx.Pessoas.FirstOrDefault(x => x.Cpf.Equals(p.Cpf));
         }
 
+        public Pessoa BuscarPessoaPorCpf(string p)
+        {
+            return ctx.Pessoas.Include(x => x.Endereco).FirstOrDefault(x => x.Cpf.Equals(p));
+        }
+
         public List<Pessoa> ListarTodos()
         {
-            return ctx.Pessoas.ToList();
+            return ctx.Pessoas.Include(x =>x.Endereco).ToList();
         }
 
         public void AlterarPessoa(Pessoa p)

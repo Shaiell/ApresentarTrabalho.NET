@@ -47,6 +47,8 @@ namespace Domain
         [Compare("Senha", ErrorMessage = "Os campos não coincidem!")]
         public string ConfirmacaoSenha { get; set; }
 
+        public string Acesso { get; set; }
+
 
         public Pessoa()
         {

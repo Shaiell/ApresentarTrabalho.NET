@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Domain;
 using Repository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace OrdemDeServico2.Controllers
 {
+    [Authorize]
     public class EstoqueController : Controller
     {
         private readonly EstoqueDAO eDAO;

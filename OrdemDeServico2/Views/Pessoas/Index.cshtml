@@ -1,14 +1,17 @@
 ﻿@model IEnumerable<Domain.Pessoa>
 
 @{
-    ViewData["Title"] = "Index";
+    Pessoa pessoa = ViewBag.Pessoa;
+
+    if (pessoa.Acesso.Equals("Funcionario"))
+    {
+        Layout = "~/Views/Shared/Layout1.cshtml";
+    }
 }
 
-<h2>Index</h2>
+<h2>Usuarios</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -22,50 +25,47 @@
                 @Html.DisplayNameFor(model => model.Telefone)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CriadoEm)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Sexo)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Senha)
+                @Html.DisplayNameFor(model => model.Acesso)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Endereco.Bairro)
+            </th>
+
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cpf)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CriadoEm)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sexo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Senha)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PessoaId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PessoaId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PessoaId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cpf)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sexo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Acesso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Endereco.Bairro)
+                </td>
+
+            </tr>
+        }
     </tbody>
 </table>

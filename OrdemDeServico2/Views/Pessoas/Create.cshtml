@@ -1,98 +1,105 @@
 ﻿@model Domain.Pessoa
 
 @{
+  Layout = "~/Views/Shared/Layout2.cshtml";
 }
 
-    <h2>Funcionarios</h2>
-</br>
 
-    <form method="post">
-        <fieldset>
-            <legend>Dados do Endereço</legend>
-            <div class="row">
-                <div class="col-md-4">
-                    <div asp-validation-summary="ModelOnly"
-                         class="text-primary"></div>
-                    <div class="form-group" id="Cep">
-                        <label asp-for="Endereco.Cep"></label>
-                        <input type="text" asp-for="Endereco.Cep"
-                               class="form-control" />
-                    </div>
-                    <input type="submit" class="btn btn-info"
-                           value="Buscar" asp-action="BuscarCep"
-                           asp-controller="Pessoas" />
-                    <div class="form-group" id="Logradouro">
-                        <label asp-for="Endereco.Logradouro"></label>
-                        <input type="text" asp-for="Endereco.Logradouro"
-                               class="form-control" readonly="" />
-                    </div>
-                    <div class="form-group" id="Bairro">
-                        <label asp-for="Endereco.Bairro"></label>
-                        <input type="text" asp-for="Endereco.Bairro"
-                               class="form-control" readonly="" />
-                    </div>
-                    <div class="form-group" id="Cidade">
-                        <label asp-for="Endereco.Cidade"></label>
-                        <input type="text" asp-for="Endereco.Cidade"
-                               class="form-control" readonly="" />
-                    </div>
-                    <div class="form-group" id="Uf">
-                        <label asp-for="Endereco.Estado"></label>
-                        <input type="text" asp-for="Endereco.Estado"
-                               class="form-control" readonly="" />
-                    </div>
-                </div>
-            </div>
-        </fieldset>
+
+        <h2>Funcionarios</h2>
         </br>
-        <fieldset>
-            <legend>Dados do Usuario</legend>
-            <div class="row">
-                <div class="col-md-4">
-                    <form asp-action="Create">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div class="form-group">
-                            <label asp-for="Nome" class="control-label"></label>
-                            <input asp-for="Nome" class="form-control" />
-                            <span asp-validation-for="Nome" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Cpf" class="control-label"></label>
-                            <input asp-for="Cpf" class="form-control" />
-                            <span asp-validation-for="Cpf" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Telefone" class="control-label"></label>
-                            <input asp-for="Telefone" class="form-control" />
-                            <span asp-validation-for="Telefone" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Sexo" class="control-label"></label>
-                            <input asp-for="Sexo" class="form-control" />
-                            <span asp-validation-for="Sexo" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Email" class="control-label"></label>
-                            <input asp-for="Email" class="form-control" />
-                            <span asp-validation-for="Email" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="Senha" class="control-label"></label>
-                            <input asp-for="Senha" class="form-control" />
-                            <span asp-validation-for="Senha" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <label asp-for="ConfirmacaoSenha" class="control-label"></label>
-                            <input asp-for="ConfirmacaoSenha" class="form-control" />
-                            <span asp-validation-for="ConfirmacaoSenha" class="text-danger"></span>
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" value="Cadastrar" class="btn btn-success" />
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </fieldset>
-    </form>
 
+        <form method="post">
+            <fieldset>
+                <legend>Dados do Endereço</legend>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-primary"></div>
+                        <div class="form-group" id="Cep">
+                            <label asp-for="Endereco.Cep"></label>
+                            <input type="text" asp-for="Endereco.Cep"
+                                   class="form-control" />
+                        </div>
+                        <input type="submit" class="btn btn-info"
+                               value="Buscar" asp-action="BuscarCep"
+                               asp-controller="Pessoas" />
+                        <div class="form-group" id="Logradouro">
+                            <label asp-for="Endereco.Logradouro"></label>
+                            <input type="text" asp-for="Endereco.Logradouro"
+                                   class="form-control" readonly="" />
+                        </div>
+                        <div class="form-group" id="Bairro">
+                            <label asp-for="Endereco.Bairro"></label>
+                            <input type="text" asp-for="Endereco.Bairro"
+                                   class="form-control" readonly="" />
+                        </div>
+                        <div class="form-group" id="Cidade">
+                            <label asp-for="Endereco.Cidade"></label>
+                            <input type="text" asp-for="Endereco.Cidade"
+                                   class="form-control" readonly="" />
+                        </div>
+                        <div class="form-group" id="Uf">
+                            <label asp-for="Endereco.Estado"></label>
+                            <input type="text" asp-for="Endereco.Estado"
+                                   class="form-control" readonly="" />
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            </br>
+            <fieldset>
+                <legend>Dados do Usuario</legend>
+                <div class="row">
+                    <div class="col-md-4">
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label asp-for="Nome" class="control-label"></label>
+                                <input asp-for="Nome" class="form-control" />
+                                <span asp-validation-for="Nome" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Cpf" class="control-label"></label>
+                                <input asp-for="Cpf" class="form-control" />
+                                <span asp-validation-for="Cpf" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Telefone" class="control-label"></label>
+                                <input asp-for="Telefone" class="form-control" />
+                                <span asp-validation-for="Telefone" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Sexo" class="control-label"></label></br>
+                                <input type="radio" asp-for="Sexo" value="Feminino">Feminino
+                                <input type="radio" asp-for="Sexo" value="Masculino" />Masculino
+                                <span asp-validation-for="Sexo" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Email" class="control-label"></label>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Senha" class="control-label"></label>
+                                <input asp-for="Senha" class="form-control" type="password" />
+                                <span asp-validation-for="Senha" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ConfirmacaoSenha" class="control-label"></label>
+                                <input asp-for="ConfirmacaoSenha" class="form-control" type="password" />
+                                <span asp-validation-for="ConfirmacaoSenha" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Conta</label></br>
+                                <input type="checkbox" value="Administrador" name="nivel">Administrador
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Cadastrar" class="btn btn-success" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
 

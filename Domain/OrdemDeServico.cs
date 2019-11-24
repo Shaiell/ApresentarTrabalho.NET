@@ -13,14 +13,27 @@ namespace Domain
         public int OrdemId { get; set; }
         public Pessoa Funcionario { get; set; }
         public Pessoa Cliente { get; set; }
+
+
         public Estoque Processador { get; set; }
+
         public Estoque PlacaMae { get; set; }
+
         public Estoque Memoria { get; set; }
+
         public Estoque PlacaVideo { get; set; }
+
         public Estoque Hd { get; set; }
+
         public Estoque Ssd { get; set; }
+
         public bool Aprovado { get; set; }
+        public bool Negado { get; set; }
+
+        [Required(ErrorMessage = "*Campo Obrigatorio.")]
         public DateTime? InicioProducao { get; set; }
+
+        [Required(ErrorMessage = "*Campo Obrigatorio.")]
         public DateTime? TerminoProducao { get; set; }
 
         public OrdemDeServico()

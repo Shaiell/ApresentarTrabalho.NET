@@ -33,7 +33,10 @@ C:\Users\jclri\Desktop\C#\OrdemDeServico2\OrdemDeServico2\obj\Debug\netcoreapp2.
 C:\Users\jclri\Desktop\C#\OrdemDeServico2\OrdemDeServico2\obj\Debug\netcoreapp2.1\Razor\Views\Estoque\Create.g.cshtml.cs
 C:\Users\jclri\Desktop\C#\OrdemDeServico2\OrdemDeServico2\obj\Debug\netcoreapp2.1\Razor\Views\Estoque\Index.g.cshtml.cs
 C:\Users\jclri\Desktop\C#\OrdemDeServico2\OrdemDeServico2\obj\Debug\netcoreapp2.1\Razor\Views\Pessoas\Create.g.cshtml.cs
-C:\Users\jclri\Desktop\C#\OrdemDeServico2\OrdemDeServico2\obj\Debug\netcoreapp2.1\Razor\Views\Pessoas\Delete.g.cshtml.cs
-C:\Users\jclri\Desktop\C#\OrdemDeServico2\OrdemDeServico2\obj\Debug\netcoreapp2.1\Razor\Views\Pessoas\Details.g.cshtml.cs
-C:\Users\jclri\Desktop\C#\OrdemDeServico2\OrdemDeServico2\obj\Debug\netcoreapp2.1\Razor\Views\Pessoas\Edit.g.cshtml.cs
 C:\Users\jclri\Desktop\C#\OrdemDeServico2\OrdemDeServico2\obj\Debug\netcoreapp2.1\Razor\Views\Pessoas\Index.g.cshtml.cs
+C:\Users\jclri\Desktop\C#\OrdemDeServico2\OrdemDeServico2\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Layout2.g.cshtml.cs
+C:\Users\jclri\Desktop\C#\OrdemDeServico2\OrdemDeServico2\obj\Debug\netcoreapp2.1\Razor\Views\Pessoas\Login.g.cshtml.cs
+C:\Users\jclri\Desktop\C#\OrdemDeServico2\OrdemDeServico2\obj\Debug\netcoreapp2.1\Razor\Views\OrdemDeServico\Create.g.cshtml.cs
+C:\Users\jclri\Desktop\C#\OrdemDeServico2\OrdemDeServico2\obj\Debug\netcoreapp2.1\Razor\Views\OrdemDeServico\Index.g.cshtml.cs
+C:\Users\jclri\Desktop\C#\OrdemDeServico2\OrdemDeServico2\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Layout1.g.cshtml.cs
+C:\Users\jclri\Desktop\C#\OrdemDeServico2\OrdemDeServico2\obj\Debug\netcoreapp2.1\Razor\Views\OrdemDeServico\IndexAdmim.g.cshtml.cs

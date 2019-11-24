@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Domain;
 using Repository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace OrdemDeServico2.Controllers
 {
+    [Authorize]
+    //[Authorize(Roles ="ADM")]
     public class ProdutoController : Controller
     {
         private readonly ProdutoDAO pDAO;

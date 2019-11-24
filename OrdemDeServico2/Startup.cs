@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -39,12 +41,17 @@ namespace OrdemDeServico2
             services.AddScoped<CategoriaDAO>();
             services.AddScoped<EstoqueDAO>();
             services.AddScoped<PessoaDAO>();
+            services.AddScoped<OrdemDeServicoDAO>();
 
             //Configuração da sessão deve ser colocada ANTES
             //do services.AddMvc()
             services.AddSession();
             services.AddDistributedMemoryCache();
             //termina configuração manual
+
+            //Configurar o Identity na aplicação
+            services.AddIdentity<UsuarioLogado, IdentityRole>().AddEntityFrameworkStores<Context>().AddDefaultTokenProviders();
+            services.ConfigureApplicationCookie(options => { options.LoginPath = "/Usuario/Loguin"; options.AccessDeniedPath = "/Usuario/AcessoNegado"; } );
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -63,12 +70,14 @@ namespace OrdemDeServico2
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Produto}/{action=Index}/{id?}");
+                    template: "{controller=Pessoas}/{action=Login}/{id?}");
             });
         }
     }

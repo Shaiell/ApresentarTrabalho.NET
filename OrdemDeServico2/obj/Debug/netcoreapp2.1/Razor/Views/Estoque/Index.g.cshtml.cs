@@ -75,12 +75,12 @@ using Domain;
             WriteLiteral("\r\n<h2>Estoque</h2>\r\n\r\n");
             EndContext();
             BeginContext(109, 545, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4d5df7292abd48eb9256fa6c0535262d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f1193a214efa473ca472afbbd240a8c6", async() => {
                 BeginContext(148, 37, true);
                 WriteLiteral("\r\n    <div class=\"mx-sm-3\">\r\n        ");
                 EndContext();
                 BeginContext(185, 60, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3a4b7a3d43a542e2ba2cd6912e869a64", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "973504efa6e0453a8b27f5b5db43f13a", async() => {
                     BeginContext(232, 9, true);
                     WriteLiteral("Cadastrar");
                     EndContext();
@@ -103,12 +103,12 @@ using Domain;
                 WriteLiteral("\r\n    </div>\r\n    <div class=\"mx-sm-3\">\r\n        ");
                 EndContext();
                 BeginContext(294, 146, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("select", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c049afcdbea14954aa9a3e9f401dd6d5", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("select", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d97b454fc3e54c70b8a0f1a0a70aa3b7", async() => {
                     BeginContext(376, 14, true);
                     WriteLiteral("\r\n            ");
                     EndContext();
                     BeginContext(390, 31, false);
-                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e3bcc2139b0547f79c9a6fbfadc798b4", async() => {
+                    __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4339b18b379849109dd2afe824142a64", async() => {
                         BeginContext(398, 14, true);
                         WriteLiteral(" --Selecione--");
                         EndContext();
@@ -152,7 +152,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_SelectTagHelper.Items = ViewBag.Categorias
                 WriteLiteral("\r\n\r\n        <input type=\"submit\" value=\"Pesquisar\" class=\"btn btn-success\"</input>\r\n    </div>\r\n    <div class=\"mx-sm-3\">\r\n        ");
                 EndContext();
                 BeginContext(571, 62, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6e2e0d86a0b84a8aa1b07f144e952e95", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "553e613deec94507b197be1b29d07f45", async() => {
                     BeginContext(617, 12, true);
                     WriteLiteral("Buscar Todos");
                     EndContext();
@@ -276,7 +276,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_SelectTagHelper.Items = ViewBag.Categorias
             WriteLiteral("\r\n                </td>\r\n                <td>\r\n                    ");
             EndContext();
             BeginContext(1692, 88, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e29eb06ab7ef458a935f72593bc818e6", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5360f0a67e4a46c29ca214f28cb492c3", async() => {
                 BeginContext(1769, 7, true);
                 WriteLiteral("Excluir");
                 EndContext();
