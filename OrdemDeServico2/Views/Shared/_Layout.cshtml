@@ -16,6 +16,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" asp-action="Index" asp-controller="Produto">Produtos</a>
         <a class="navbar-brand" asp-action="Index" asp-controller="Estoque">Estoques</a>
+        <a class="navbar-brand" asp-action="IndexAdmim" asp-controller="OrdemDeServico">Ordem De Servico</a>
         <a class="navbar-brand" asp-action="Index" asp-controller="Pessoas">Usuarios</a>
         <ul class="navbar-nav ml-auto">
             @if (SignManager.IsSignedIn(User))

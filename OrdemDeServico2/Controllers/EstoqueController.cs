@@ -32,12 +32,15 @@ namespace OrdemDeServico2.Controllers
             {
                 ViewBag.Categorias = new SelectList(cDAO.ListarTodos(), "CategoriaId", "Nome");
                 ViewBag.DataHora = DateTime.Now;
-
-                return View(eDAO.BuscarEstoquePorCategoria(drpCategorias));
+                ViewBag.Entrada = eDAO.BuscarEstoqueEntrdaPorCategoria(drpCategorias);
+                ViewBag.Saida = eDAO.BuscarEstoquesaidaPorCategoria(drpCategorias);
+                return View();
             }
             ViewBag.Categorias = new SelectList(cDAO.ListarTodos(), "CategoriaId", "Nome");
             ViewBag.DataHora = DateTime.Now;
-            return View(eDAO.BuscarTodaListaDeEntrada());
+            ViewBag.Entrada = eDAO.BuscarTodaListaDeEntrada();
+            ViewBag.Saida = eDAO.BuscarTodaListaDeSaida();
+            return View();
         }
 
 

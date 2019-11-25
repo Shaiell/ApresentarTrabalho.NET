@@ -10,8 +10,8 @@ using Repository;
 namespace Repository.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20191124175038_Primeira")]
-    partial class Primeira
+    [Migration("20191125000815_primeira")]
+    partial class primeira
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -109,6 +109,8 @@ namespace Repository.Migrations
                     b.Property<int?>("PlacaVideoEstoqueId");
 
                     b.Property<int?>("ProcessadorEstoqueId");
+
+                    b.Property<DateTime?>("Rejeicao");
 
                     b.Property<int?>("SsdEstoqueId");
 
@@ -375,6 +377,8 @@ namespace Repository.Migrations
                 {
                     b.HasBaseType("Domain.Estoque");
 
+                    b.Property<bool>("Ativo");
+
                     b.Property<DateTime>("DataSaida");
 
                     b.Property<int>("OrdemDeServico");
@@ -422,27 +426,27 @@ namespace Repository.Migrations
                         .WithMany()
                         .HasForeignKey("FuncionarioPessoaId");
 
-                    b.HasOne("Domain.Estoque", "Hd")
+                    b.HasOne("Domain.EstoqueSaida", "Hd")
                         .WithMany()
                         .HasForeignKey("HdEstoqueId");
 
-                    b.HasOne("Domain.Estoque", "Memoria")
+                    b.HasOne("Domain.EstoqueSaida", "Memoria")
                         .WithMany()
                         .HasForeignKey("MemoriaEstoqueId");
 
-                    b.HasOne("Domain.Estoque", "PlacaMae")
+                    b.HasOne("Domain.EstoqueSaida", "PlacaMae")
                         .WithMany()
                         .HasForeignKey("PlacaMaeEstoqueId");
 
-                    b.HasOne("Domain.Estoque", "PlacaVideo")
+                    b.HasOne("Domain.EstoqueSaida", "PlacaVideo")
                         .WithMany()
                         .HasForeignKey("PlacaVideoEstoqueId");
 
-                    b.HasOne("Domain.Estoque", "Processador")
+                    b.HasOne("Domain.EstoqueSaida", "Processador")
                         .WithMany()
                         .HasForeignKey("ProcessadorEstoqueId");
 
-                    b.HasOne("Domain.Estoque", "Ssd")
+                    b.HasOne("Domain.EstoqueSaida", "Ssd")
                         .WithMany()
                         .HasForeignKey("SsdEstoqueId");
                 });

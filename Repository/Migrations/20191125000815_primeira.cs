@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Repository.Migrations
 {
-    public partial class Primeira : Migration
+    public partial class primeira : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -244,7 +244,8 @@ namespace Repository.Migrations
                     DataEntrada = table.Column<DateTime>(nullable: false),
                     Discriminator = table.Column<string>(nullable: false),
                     DataSaida = table.Column<DateTime>(nullable: true),
-                    OrdemDeServico = table.Column<int>(nullable: true)
+                    OrdemDeServico = table.Column<int>(nullable: true),
+                    Ativo = table.Column<bool>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -274,7 +275,8 @@ namespace Repository.Migrations
                     Aprovado = table.Column<bool>(nullable: false),
                     Negado = table.Column<bool>(nullable: false),
                     InicioProducao = table.Column<DateTime>(nullable: false),
-                    TerminoProducao = table.Column<DateTime>(nullable: false)
+                    TerminoProducao = table.Column<DateTime>(nullable: false),
+                    Rejeicao = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {

@@ -42,7 +42,7 @@ namespace Repository
 
         public  List<OrdemDeServico> ListarOsALiberarPorPessoa(Pessoa c)
         {
-            return ctx.OrdemsDeServico.Where(x => x.Aprovado.Equals(false) && x.Cliente.Cpf == c.Cpf).Include(x => x.Processador.Produto)
+            return ctx.OrdemsDeServico.Where(x => x.Aprovado.Equals(false) && x.Cliente.Cpf == c.Cpf && x.Negado.Equals(false)).Include(x => x.Processador.Produto)
                 .Include(x => x.PlacaMae.Produto).Include(x => x.Memoria.Produto).Include(x => x.PlacaVideo.Produto)
                 .Include(x => x.Hd.Produto).Include(x => x.Ssd.Produto).Include(x => x.Funcionario).Include(x => x.Cliente).ToList();
 
@@ -56,9 +56,17 @@ namespace Repository
 
         }
 
+        public List<OrdemDeServico> ListarOsReprovadasPorPessoa(Pessoa c)
+        {
+            return ctx.OrdemsDeServico.Where(x => x.Aprovado.Equals(false) && x.Cliente.Cpf == c.Cpf && x.Negado.Equals(true)).Include(x => x.Processador.Produto)
+                .Include(x => x.PlacaMae.Produto).Include(x => x.Memoria.Produto).Include(x => x.PlacaVideo.Produto)
+                .Include(x => x.Hd.Produto).Include(x => x.Ssd.Produto).Include(x => x.Funcionario).Include(x => x.Cliente).ToList();
+
+        }
+
         public List<OrdemDeServico> ListarOsALiberarTodos()
         {
-            return ctx.OrdemsDeServico.Where(x => x.Aprovado.Equals(false)).Include(x => x.Processador.Produto)
+            return ctx.OrdemsDeServico.Where(x => x.Aprovado.Equals(false) && x.Negado.Equals(false)).Include(x => x.Processador.Produto)
                 .Include(x => x.PlacaMae.Produto).Include(x => x.Memoria.Produto).Include(x => x.PlacaVideo.Produto)
                 .Include(x => x.Hd.Produto).Include(x => x.Ssd.Produto).Include(x => x.Funcionario).Include(x => x.Cliente).ToList();
 
@@ -72,10 +80,26 @@ namespace Repository
 
         }
 
-        public  void LiberarOrdemServico(OrdemDeServico o)
+        public List<OrdemDeServico> ListarOsReprovadasTodos()
+        {
+            return ctx.OrdemsDeServico.Where(x => x.Aprovado.Equals(false) && x.Negado.Equals(true)).Include(x => x.Processador.Produto)
+                .Include(x => x.PlacaMae.Produto).Include(x => x.Memoria.Produto).Include(x => x.PlacaVideo.Produto)
+                .Include(x => x.Hd.Produto).Include(x => x.Ssd.Produto).Include(x => x.Funcionario).Include(x => x.Cliente).ToList();
+
+        }
+
+        public  void AlterarOrdemServico(OrdemDeServico o)
         {
             ctx.Entry(o).State = EntityState.Modified;
             ctx.SaveChanges();
+        }
+
+        public OrdemDeServico buscarOrdemProId(int id)
+        {
+            return ctx.OrdemsDeServico.Include(x => x.Processador.Produto)
+                .Include(x => x.PlacaMae.Produto).Include(x => x.Memoria.Produto).Include(x => x.PlacaVideo.Produto)
+                .Include(x => x.Hd.Produto).Include(x => x.Ssd.Produto).Include(x => x.Funcionario).Include(x => x.Cliente).FirstOrDefault(x => x.OrdemId.Equals(id));
+            ;
         }
     }
 }

@@ -33,9 +33,15 @@ namespace Repository
             throw new NotImplementedException();
         }
 
-        public  List<EstoqueEntrada> BuscarEstoquePorCategoria(int IdCategoria)
+        public  List<EstoqueEntrada> BuscarEstoqueEntrdaPorCategoria(int IdCategoria)
         {
             return ctx.Estoques.AsNoTracking().OfType<EstoqueEntrada>().Include(x => x.Produto).Include(prod => prod.Produto.Categoria).Where(x => x.Produto.Categoria.CategoriaId == IdCategoria).OrderBy(x => x.DataEntrada).ToList();
+
+        }
+
+        public List<EstoqueSaida> BuscarEstoquesaidaPorCategoria(int IdCategoria)
+        {
+            return ctx.Estoques.AsNoTracking().OfType<EstoqueSaida>().Include(x => x.Produto).Include(prod => prod.Produto.Categoria).Where(x => x.Produto.Categoria.CategoriaId == IdCategoria &&  x.Ativo.Equals(true)).OrderBy(x => x.DataSaida).ToList();
 
         }
 
@@ -52,7 +58,7 @@ namespace Repository
 
         public  List<EstoqueSaida> BuscarTodaListaDeSaida()
         {
-            return ctx.Estoques.OfType<EstoqueSaida>().Include(x => x.Produto).Include(prod => prod.Produto.Categoria).OrderByDescending(x => x.DataSaida).ToList();
+            return ctx.Estoques.OfType<EstoqueSaida>().Include(x => x.Produto).Include(prod => prod.Produto.Categoria).Where(x => x.Ativo.Equals(true)).OrderBy(x => x.DataSaida).ToList();
 
         }
 
@@ -73,7 +79,7 @@ namespace Repository
         {
             List<EstoqueEntrada> estoquePorID = new List<EstoqueEntrada>();
             List<EstoqueEntrada> estoqueUnicos = new List<EstoqueEntrada>();
-            estoquePorID = BuscarEstoquePorCategoria(IdCategoria);
+            estoquePorID = BuscarEstoqueEntrdaPorCategoria(IdCategoria);
             if (estoquePorID.Count != 0)
             {
                 estoqueUnicos.Add(estoquePorID[0]);
@@ -103,7 +109,7 @@ namespace Repository
         {
             List<EstoqueEntrada> estoquePorID = new List<EstoqueEntrada>();
             List<EstoqueEntrada> estoqueUnicos = new List<EstoqueEntrada>();
-            estoquePorID = BuscarEstoquePorCategoria(IdCategoria);
+            estoquePorID = BuscarEstoqueEntrdaPorCategoria(IdCategoria);
             if (estoquePorID.Count != 0)
             {
                 estoqueUnicos.Add(estoquePorID[0]);
@@ -134,7 +140,7 @@ namespace Repository
             List<EstoqueEntrada> estoquePorID = new List<EstoqueEntrada>();
             List<EstoqueEntrada> estoqueUnicos = new List<EstoqueEntrada>();
             estoqueUnicos = ListaResumida(IdCategoria);
-            estoquePorID = BuscarEstoquePorCategoria(IdCategoria);
+            estoquePorID = BuscarEstoqueEntrdaPorCategoria(IdCategoria);
 
 
 

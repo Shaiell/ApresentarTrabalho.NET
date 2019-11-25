@@ -17,11 +17,13 @@ namespace OrdemDeServico2.Controllers
     {
         private readonly ProdutoDAO pDAO;
         private readonly CategoriaDAO cDAO;
+        private readonly EstoqueDAO eDAO;
 
-        public ProdutoController(ProdutoDAO produtoDAO, CategoriaDAO categoriaDAO)
+        public ProdutoController(ProdutoDAO produtoDAO, CategoriaDAO categoriaDAO, EstoqueDAO estoqueDAO)
         {
             pDAO = produtoDAO;
             cDAO = categoriaDAO;
+            eDAO = estoqueDAO;
         }
         
         public IActionResult Index(int drpCategorias)
@@ -90,7 +92,16 @@ namespace OrdemDeServico2.Controllers
         {
             if (id != null)
             {
-                pDAO.ExcluirProduto(id);
+                Produto p = pDAO.BuscarPorId(id);
+                if(eDAO.BuscarEstoquePorIdProduto(p.ProdutoId) ==null) {
+                    pDAO.ExcluirProduto(id);
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Este produto não pode ser excluido pois existe um item no estoque");
+                    return RedirectToAction("Index");
+                }
+
             }
             else
             {

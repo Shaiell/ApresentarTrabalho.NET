@@ -11,6 +11,12 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div id="Categoria" class="form-group">
+                <label>Categoria:</label>
+                <select asp-items="@ViewBag.Categorias" class="form-control" name="drpCategorias">
+                    <option> --Selecione--</option>
+                </select>
+            </div>
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
                 <input asp-for="Nome" class="form-control" />
@@ -21,15 +27,10 @@
                 <input asp-for="Preco" class="form-control" />
                 <span asp-validation-for="Preco" class="text-danger"></span>
             </div>
-            <div id="Categoria" class="form-group">
-                <label>Categoria:</label>
-                <select asp-items="@ViewBag.Categorias" class="form-control" name="drpCategorias">
-                    <option> --Selecione--</option>
-                </select>
+
+            <div class="form-group">
+                <input type="submit" value="Cadastrar" class="btn btn-success" />
             </div>
-                <div class="form-group">
-                    <input type="submit" value="Cadastrar" class="btn btn-success" />
-                </div>
         </form>
     </div>
 </div>

@@ -15,17 +15,17 @@ namespace Domain
         public Pessoa Cliente { get; set; }
 
 
-        public Estoque Processador { get; set; }
+        public EstoqueSaida Processador { get; set; }
 
-        public Estoque PlacaMae { get; set; }
+        public EstoqueSaida PlacaMae { get; set; }
 
-        public Estoque Memoria { get; set; }
+        public EstoqueSaida Memoria { get; set; }
 
-        public Estoque PlacaVideo { get; set; }
+        public EstoqueSaida PlacaVideo { get; set; }
 
-        public Estoque Hd { get; set; }
+        public EstoqueSaida Hd { get; set; }
 
-        public Estoque Ssd { get; set; }
+        public EstoqueSaida Ssd { get; set; }
 
         public bool Aprovado { get; set; }
         public bool Negado { get; set; }
@@ -35,6 +35,7 @@ namespace Domain
 
         [Required(ErrorMessage = "*Campo Obrigatorio.")]
         public DateTime? TerminoProducao { get; set; }
+        public DateTime? Rejeicao { get; set; }
 
         public OrdemDeServico()
         {
