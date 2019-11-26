@@ -14,7 +14,9 @@
     <p>
         <a asp-action="Create" class="btn btn-success">Cadastrar</a>
     </p>
-    <h2>OS para aprovação:</h2>
+    </br>
+    </br>
+    <h4>OS para aprovação:</h4>
     <table style="margin-top:10px;margin-bottom:10px" class="table table-hover table-striped">
         <thead>
             <tr>
@@ -48,39 +50,39 @@
         <tbody>
             @foreach (var item in Model)
             {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OrdemId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cliente.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Processador.Produto.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Memoria.Produto.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PlacaMae.Produto.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PlacaVideo.Produto.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Hd.Produto.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Ssd.Produto.Nome)
-                </td>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrdemId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cliente.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Processador.Produto.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Memoria.Produto.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PlacaMae.Produto.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PlacaVideo.Produto.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Hd.Produto.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ssd.Produto.Nome)
+                    </td>
 
-            </tr>
+                </tr>
             }
         </tbody>
     </table>
     </br>
     </br>
-    <h2>OS Aprovadas:</h2>
+    <h4>OS Aprovadas:</h4>
     <table style="margin-top:10px;margin-bottom:10px" class="table table-hover table-striped">
         <thead>
             <tr>
@@ -123,49 +125,49 @@
         <tbody>
             @foreach (var item in liberadas)
             {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OrdemId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Cliente.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Funcionario.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Processador.Produto.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Memoria.Produto.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PlacaMae.Produto.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PlacaVideo.Produto.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Hd.Produto.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Ssd.Produto.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.InicioProducao)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TerminoProducao)
-                </td>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrdemId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cliente.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Funcionario.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Processador.Produto.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Memoria.Produto.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PlacaMae.Produto.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PlacaVideo.Produto.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Hd.Produto.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ssd.Produto.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InicioProducao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TerminoProducao)
+                    </td>
 
-            </tr>
+                </tr>
             }
         </tbody>
-        </table>
+    </table>
     <table>
         </br>
         </br>
-        <h2>OS Negada:</h2>
+        <h4>OS Negada:</h4>
         <table style="margin-top:10px;margin-bottom:10px" class="table table-hover table-striped">
             <thead>
                 <tr>
@@ -206,39 +208,39 @@
             <tbody>
                 @foreach (var item in reprovadas)
                 {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.OrdemId)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Cliente.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Funcionario.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Processador.Produto.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Memoria.Produto.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PlacaMae.Produto.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PlacaVideo.Produto.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Hd.Produto.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Ssd.Produto.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Rejeicao)
-                    </td>
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.OrdemId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cliente.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Funcionario.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Processador.Produto.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Memoria.Produto.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PlacaMae.Produto.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PlacaVideo.Produto.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Hd.Produto.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ssd.Produto.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Rejeicao)
+                        </td>
 
-                </tr>
+                    </tr>
                 }
             </tbody>
         </table>
