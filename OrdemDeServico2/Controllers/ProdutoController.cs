@@ -18,6 +18,7 @@ namespace OrdemDeServico2.Controllers
         private readonly ProdutoDAO pDAO;
         private readonly CategoriaDAO cDAO;
         private readonly EstoqueDAO eDAO;
+        private string erro;
 
         public ProdutoController(ProdutoDAO produtoDAO, CategoriaDAO categoriaDAO, EstoqueDAO estoqueDAO)
         {
@@ -28,15 +29,26 @@ namespace OrdemDeServico2.Controllers
         
         public IActionResult Index(int drpCategorias)
         {
-            if(drpCategorias != 0) { 
+            
+            if (TempData.Get<string>("Erro") != null)
+            {
+                ViewBag.Erro = erro = TempData.Get<string>("Erro");
+            }
+            else
+            {
+                ViewBag.Erro = erro = "";
+            }
+
+            if (drpCategorias != 0) { 
             ViewBag.Categorias = new SelectList(cDAO.ListarTodos(), "CategoriaId", "Nome");
             ViewBag.DataHora = DateTime.Now;
-
             return View(pDAO.BuscarPorCategoria(drpCategorias));
             }
             ViewBag.Categorias = new SelectList(cDAO.ListarTodos(), "CategoriaId", "Nome");
             ViewBag.DataHora = DateTime.Now;           
             return View(pDAO.ListarTodos());
+
+
 
         }
 
@@ -73,8 +85,12 @@ namespace OrdemDeServico2.Controllers
 
         public IActionResult Edit(int? id)
         {
-            ViewBag.Categorias = new SelectList(cDAO.ListarTodos(), "CategoriaId", "Nome");
-            return View(pDAO.BuscarPorId(id));
+            Produto produto = pDAO.BuscarPorId(id);
+            SelectList categorias = new SelectList(cDAO.ListarTodos(), "CategoriaId", "Nome");
+            var marcado = categorias.FirstOrDefault(x => x.Value == produto.Categoria.CategoriaId.ToString()).Selected = true;
+            ViewBag.Categorias = categorias;
+            
+            return View(produto);
         }
 
 
@@ -98,7 +114,7 @@ namespace OrdemDeServico2.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Este produto não pode ser excluido pois existe um item no estoque");
+                    TempData.Put("Erro", "Este produto não pode ser excluido pois existe um item no estoque");
                     return RedirectToAction("Index");
                 }
 

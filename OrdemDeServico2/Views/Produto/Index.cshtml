@@ -4,6 +4,8 @@
     DateTime dataHora = ViewBag.DataHora;
 }
 
+
+
 <h2>Produtos</h2>
 <form class="form-inline mb-5 mx-sm-3">
     <div class="mx-sm-3">
@@ -20,6 +22,10 @@
         <a asp-action="Index" class="btn btn-success">Buscar Todos</a>
     </div>
 </form>
+
+<span class="text-danger">@ViewBag.Erro</span>
+</br>
+</br>
 
 <table style="margin-top:10px;margin-bottom:10px" class="table table-hover table-striped">
     <thead>
